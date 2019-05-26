@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXButton;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
@@ -27,6 +29,12 @@ public class LogInController {
     }
     @FXML
     public void enterAction(ActionEvent event) {
+    	try {
+    		Parent root = FXMLLoader.load(getClass().getResource("Window.fxml"));
+    		bttEnter.getScene().setRoot(root);
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
     	
     }
 

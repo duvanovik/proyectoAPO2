@@ -1,8 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowController">
+   <children>
+      <Pane fx:id="panelMusic" layoutX="263.0" prefHeight="744.0" prefWidth="932.0" visible="false">
+         <children>
+            <Pane layoutY="84.0" prefHeight="108.0" prefWidth="926.0" style="-fx-background-color: #7156DD;">
+               <children>
+                  <Label layoutX="47.0" layoutY="26.0" prefHeight="53.0" prefWidth="128.0" text="Music" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="panelPublications" layoutX="263.0" layoutY="-1.0" prefHeight="744.0" prefWidth="932.0" visible="false">
+         <children>
+            <Pane layoutY="85.0" prefHeight="108.0" prefWidth="926.0" style="-fx-background-color: #7156DD #7156DD;">
+               <children>
+                  <Label layoutX="59.0" layoutY="25.0" prefHeight="53.0" prefWidth="192.0" text="Publications" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="panelGames" layoutX="264.0" layoutY="-1.0" prefHeight="744.0" prefWidth="932.0" visible="false">
+         <children>
+            <Pane layoutY="85.0" prefHeight="108.0" prefWidth="926.0" style="-fx-background-color: #7156DD #7156DD;">
+               <children>
+                  <Label layoutX="48.0" layoutY="21.0" prefHeight="53.0" prefWidth="128.0" text="Games" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="panelSettings" layoutX="263.0" layoutY="-2.0" prefHeight="744.0" prefWidth="932.0" visible="false">
+         <children>
+            <Pane layoutY="85.0" prefHeight="108.0" prefWidth="926.0" style="-fx-background-color: #7156DD #7156DD;">
+               <children>
+                  <Label layoutX="53.0" layoutY="28.0" prefHeight="53.0" prefWidth="128.0" text="Settings" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="panelSeries" layoutX="263.0" layoutY="-2.0" prefHeight="750.0" prefWidth="932.0" visible="false">
+         <children>
+            <Pane layoutY="85.0" prefHeight="108.0" prefWidth="926.0" style="-fx-background-color: #7156DD;">
+               <children>
+                  <Label layoutX="43.0" layoutY="27.0" prefHeight="53.0" prefWidth="128.0" text="Series" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="panelMovies" layoutX="264.0" prefHeight="744.0" prefWidth="932.0" visible="false" AnchorPane.rightAnchor="-4.0">
+         <children>
+            <Pane layoutY="85.0" prefHeight="108.0" prefWidth="926.0" style="-fx-background-color: #7156DD;">
+               <children>
+                  <Label layoutX="47.0" layoutY="22.0" prefHeight="53.0" prefWidth="128.0" text="Movies" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <VBox prefHeight="744.0" prefWidth="264.0" style="-fx-background-color: #3F2B63;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="155.0" prefWidth="264.0">
+               <children>
+                  <Label layoutX="68.0" layoutY="51.0" prefHeight="53.0" prefWidth="128.0" text="Spotflix" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <JFXButton fx:id="bttMovies" onAction="#showPanelMovies" prefHeight="63.0" prefWidth="264.0" text="Movies" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="bttSeries" onAction="#showPanelSeries" prefHeight="63.0" prefWidth="264.0" text="Series" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="bttGames" onAction="#showPanelGames" prefHeight="64.0" prefWidth="263.0" text="Games" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="bttMusic" onAction="#showPanelMusic" prefHeight="64.0" prefWidth="263.0" text="Music" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="bttPublications" onAction="#showPanelPublications" prefHeight="64.0" prefWidth="263.0" text="Publications" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="bttSettings" onAction="#showPanelSettings" prefHeight="64.0" prefWidth="263.0" text="Settings" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
-
