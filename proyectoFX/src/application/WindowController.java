@@ -2,9 +2,14 @@ package application;
 
 import com.jfoenix.controls.JFXButton;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import model.Book;
 
 public class WindowController {
 
@@ -43,6 +48,15 @@ public class WindowController {
     
     @FXML
     private JFXButton bttSettings;
+    
+    @FXML
+    private ListView<Book> booksList;
+
+    @FXML
+    private ImageView imageBooks;
+    
+    private final ObservableList<Book> books = 
+    	      FXCollections.observableArrayList();
     
     public void initialize() {
     	bttMovies = new JFXButton();
@@ -148,6 +162,11 @@ public class WindowController {
     	panelSeries.setVisible(false);
     	panelSettings.toFront();
     	panelSettings.setVisible(true);
+    }
+
+    @FXML
+    void bttSearchBooks(ActionEvent event) {
+
     }
 }
     
