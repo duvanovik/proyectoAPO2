@@ -1,5 +1,7 @@
 package model;
 
-public class Serie {
 
+public class Serie{
+	
+	
 }
