@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+
+<Pane fx:id="paneGameOne" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="817.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowController">
+   <children>
+      <Circle fx:id="c1" fill="DODGERBLUE" layoutX="182.0" layoutY="158.0" radius="80.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#bttBefore" text="Regresar" />
+      <Button layoutX="102.0" layoutY="21.0" mnemonicParsing="false" onAction="#playGameOne" text="Jugar" />
+   </children>
+</Pane>
