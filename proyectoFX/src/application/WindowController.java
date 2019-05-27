@@ -1,7 +1,11 @@
 package application;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 
+import exceptions.BlankException;
+import exceptions.RepeatedUserException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,12 +13,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
+import javafx.stage.StageStyle;
 import model.Book;
 import model.DigitalPlataform;
 import threads.GameOneThread;
@@ -101,6 +108,20 @@ public class WindowController {
     
     @FXML
     private Button bttEnter;
+    
+    @FXML
+    private JFXTextField txtUserName;
+
+    @FXML
+    private JFXTextField txtEmail;
+
+    @FXML
+    private JFXPasswordField txtPassword;
+    @FXML
+    private JFXTextField txtUsernameSignIn;
+
+    @FXML
+    private JFXPasswordField txtPasswordSignIn;
     
     int dx;
     int dy;
@@ -228,8 +249,27 @@ public class WindowController {
     @FXML
     public void enterAction(ActionEvent event) {
     	try {
-    		Parent root = FXMLLoader.load(getClass().getResource("Window.fxml"));
-    		bttEnter.getScene().setRoot(root);
+    		String nickname = txtUsernameSignIn.getText();
+    		String password = txtPasswordSignIn.getText();
+    		if(dg.joinUser(nickname, password)) {
+        		Parent root = FXMLLoader.load(getClass().getResource("Window.fxml"));
+        		bttEnter.getScene().setRoot(root);
+    		}
+    		else {
+    			Alert ventanita = new Alert(AlertType.ERROR);
+    			ventanita.setTitle("Unregistered user");
+    			ventanita.setHeaderText("Please Register");
+    			ventanita.setContentText("Go to sign up" );
+    			ventanita.initStyle(StageStyle.UTILITY);
+    			ventanita.showAndWait();
+    		}
+    	}catch(BlankException e) {
+			Alert ventanita = new Alert(AlertType.ERROR);
+			ventanita.setTitle("Error");
+			ventanita.setHeaderText("BlankException");
+			ventanita.setContentText("" + e.getMessage() );
+			ventanita.initStyle(StageStyle.UTILITY);
+			ventanita.showAndWait();
     	}catch(Exception e) {
     		e.printStackTrace();
     	}
@@ -250,6 +290,41 @@ public class WindowController {
     	anchorSignIn.setVisible(false);
     	anchorSignUp.toFront();
     	anchorSignUp.setVisible(true);
+    }
+	@FXML
+	void showGameTwoAction() {
+		
+	}
+    @FXML
+    void registerUserAction(ActionEvent event) {
+    	try {
+    		String nickname = txtUserName.getText();
+    		String email = txtEmail.getText();
+    		String password = txtPassword.getText();
+    		dg.addUser(nickname, password, email);
+    		anchorSignUp.setVisible(false);
+    		anchorSignUp.toBack();
+    		anchorSignIn.toFront();
+    		anchorSignIn.setVisible(true);
+    		txtUserName.clear();
+    		txtEmail.clear();
+    		txtPassword.clear();
+    	}catch(BlankException e) {
+			Alert ventanita = new Alert(AlertType.ERROR);
+			ventanita.setTitle("Error");
+			ventanita.setHeaderText("BlankException");
+			ventanita.setContentText("" + e.getMessage() );
+			ventanita.initStyle(StageStyle.UTILITY);
+			ventanita.showAndWait();
+    	}
+    	catch(RepeatedUserException e) {
+			Alert ventanita = new Alert(AlertType.ERROR);
+			ventanita.setTitle("Error");
+			ventanita.setHeaderText("RepeatedUserException");
+			ventanita.setContentText("" + e.getMessage() );
+			ventanita.initStyle(StageStyle.UTILITY);
+			ventanita.showAndWait();
+    	}
     }
 
     @FXML
@@ -306,5 +381,5 @@ public class WindowController {
         return (c1.getLayoutY() <= (bounds.getMinY() + c1.getRadius())) ||
            (c1.getLayoutY() >= (bounds.getMaxY() - c1.getRadius()));
      }
-    
+
 }

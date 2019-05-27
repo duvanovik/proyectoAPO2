@@ -19,6 +19,66 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="817.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowController">
    <children>
+      <Pane fx:id="panelGames" layoutX="263.0" prefHeight="817.0" prefWidth="932.0" visible="false">
+         <children>
+            <Pane layoutY="85.0" prefHeight="108.0" prefWidth="926.0" style="-fx-background-color: #7156DD #7156DD;">
+               <children>
+                  <Label layoutX="48.0" layoutY="21.0" prefHeight="53.0" prefWidth="128.0" text="Games" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Button fx:id="bttGame1" layoutX="74.0" layoutY="284.0" mnemonicParsing="false" onAction="#showGameOneAction" prefHeight="148.0" prefWidth="179.0">
+               <graphic>
+                  <ImageView fitHeight="108.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../data/images/planets.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="bttGame2" layoutX="393.0" layoutY="284.0" mnemonicParsing="false" onAction="#showGameTwoAction" prefHeight="148.0" prefWidth="179.0">
+               <graphic>
+                  <ImageView fitHeight="104.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../data/images/horse.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="28.0" layoutY="208.0" text="Videogames" />
+            <Label layoutX="14.0" layoutY="512.0" text="VR games" />
+            <Button fx:id="bttgGame3" layoutX="702.0" layoutY="284.0" mnemonicParsing="false" prefHeight="148.0" prefWidth="179.0">
+               <graphic>
+                  <ImageView fitHeight="104.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../data/images/laptop.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="bttGame4" layoutX="74.0" layoutY="558.0" mnemonicParsing="false" prefHeight="155.0" prefWidth="179.0">
+               <graphic>
+                  <ImageView fitHeight="104.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../data/images/flask.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="bttGame5" layoutX="390.0" layoutY="558.0" mnemonicParsing="false" prefHeight="155.0" prefWidth="179.0">
+               <graphic>
+                  <ImageView fitHeight="104.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../data/images/rocket.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
       <Pane fx:id="panelMusic" layoutX="263.0" prefHeight="817.0" prefWidth="932.0" visible="false">
          <children>
             <Pane layoutY="84.0" prefHeight="108.0" prefWidth="926.0" style="-fx-background-color: #7156DD;">
@@ -233,65 +293,5 @@
             </JFXButton>
          </children>
       </VBox>
-      <Pane fx:id="panelGames" layoutX="263.0" prefHeight="817.0" prefWidth="932.0">
-         <children>
-            <Pane layoutY="85.0" prefHeight="108.0" prefWidth="926.0" style="-fx-background-color: #7156DD #7156DD;">
-               <children>
-                  <Label layoutX="48.0" layoutY="21.0" prefHeight="53.0" prefWidth="128.0" text="Games" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="32.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Button fx:id="bttGame1" layoutX="74.0" layoutY="284.0" mnemonicParsing="false" onAction="#showGameOneAction" prefHeight="148.0" prefWidth="179.0">
-               <graphic>
-                  <ImageView fitHeight="108.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../data/images/planets.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="bttGame2" layoutX="393.0" layoutY="284.0" mnemonicParsing="false" onAction="#showGameTwoAction" prefHeight="148.0" prefWidth="179.0">
-               <graphic>
-                  <ImageView fitHeight="104.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../data/images/horse.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label layoutX="28.0" layoutY="208.0" text="Videogames" />
-            <Label layoutX="14.0" layoutY="512.0" text="VR games" />
-            <Button fx:id="bttgGame3" layoutX="702.0" layoutY="284.0" mnemonicParsing="false" prefHeight="148.0" prefWidth="179.0">
-               <graphic>
-                  <ImageView fitHeight="104.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../data/images/laptop.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="bttGame4" layoutX="74.0" layoutY="558.0" mnemonicParsing="false" prefHeight="155.0" prefWidth="179.0">
-               <graphic>
-                  <ImageView fitHeight="104.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../data/images/flask.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="bttGame5" layoutX="390.0" layoutY="558.0" mnemonicParsing="false" prefHeight="155.0" prefWidth="179.0">
-               <graphic>
-                  <ImageView fitHeight="104.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../data/images/rocket.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </Pane>
    </children>
 </AnchorPane>
