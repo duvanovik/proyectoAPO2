@@ -21,6 +21,8 @@ public class DigitalPlataform {
 	
 	private Magazine rootMagazine;
 	
+	private VRGame first;
+	
 	public DigitalPlataform(String name) {
 
 		this.name = name;
@@ -32,6 +34,8 @@ public class DigitalPlataform {
 		rootBook = null;
 		
 		rootMagazine = null;
+		
+		first = null;
 		
 		addVideogame("Gta Circulito", "Lucha", 2007, false, 123);
 		addVideogame("Reboticos", "Aventura", 2010, false, 456);
@@ -156,5 +160,22 @@ public class DigitalPlataform {
             rootMagazine.inorden( resp );
             return resp;
         }
+    }
+    public VRGame locateLast() {
+    	VRGame act = first;
+    	if(act != null) {
+    		while(act.getNext() != null) {
+    			act = act.getNext();
+    		}
+    	}
+    	return act;
+    }
+    public void addAtTheEnd(VRGame vr) {
+    	if(first == null)
+    		first = vr;
+    	else {
+    		VRGame v = locateLast();
+    		v.insertAfter(vr);
+    	}
     }
 }
