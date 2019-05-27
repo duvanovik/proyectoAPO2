@@ -2,8 +2,11 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import exceptions.BlankException;
+import exceptions.RepeatedBookException;
+import exceptions.RepeatedMagazineException;
 import exceptions.RepeatedUserException;
 
 public class DigitalPlataform {
@@ -12,7 +15,11 @@ public class DigitalPlataform {
 	private VideoGame firstVideoGame;
 	private VideoGame lastVideoGame;
 	
-	private ArrayList<User> users; 
+	private ArrayList<User> users;
+	
+	private Book rootBook;
+	
+	private Magazine rootMagazine;
 	
 	public DigitalPlataform(String name) {
 
@@ -22,18 +29,22 @@ public class DigitalPlataform {
 		
 		users = new ArrayList<User>();
 		
-		addVideogame(123, "Gta Circulito", "Lucha", 2007, false, 182,  158);
-		addVideogame(125, "Reboticos", "Aventura", 2010, false, 182, 401);
-		addVideogame(146, "Pacman", "Estrategia", 2015, false, 182, 654);
+		rootBook = null;
+		
+		rootMagazine = null;
+		
+		addVideogame("Gta Circulito", "Lucha", 2007, false, 123);
+		addVideogame("Reboticos", "Aventura", 2010, false, 456);
+		addVideogame("Pacman", "Estrategia", 2015, false, 789);
 
 	}
-	public void addVideogame(int id, String title, String genre, int year, boolean played, int x, int y) {
+	public void addVideogame(String title, String genre, int year, boolean played, int id) {
 		if(firstVideoGame == null) {
-			firstVideoGame = new VideoGame(id, title, genre, year, played, x, y);
+			firstVideoGame = new VideoGame(title, genre, year, played, id);
 			lastVideoGame = firstVideoGame;
 		}
 		else {
-			VideoGame vd = new VideoGame(id, title, genre, year, played, x, y);
+			VideoGame vd = new VideoGame(title, genre, year, played, id);
 			vd.setPrevious(lastVideoGame);
 			lastVideoGame.setNext(vd);
 			lastVideoGame = vd;
@@ -100,6 +111,50 @@ public class DigitalPlataform {
 		}
 		return login;
 	}
-
-
+	
+	public void addBook(String title, String editorial, String author, String publicationDate, String isbn, boolean readed) throws RepeatedBookException {
+		Book b = new Book(title, editorial, author, publicationDate, isbn, readed);
+		if(rootBook == null)
+			rootBook = b;
+		else
+			rootBook.add(b);
+	}
+    public Book searchBook( String title )
+    {
+    	return rootBook == null ? null : rootBook.search( title );
+    }
+    public Collection getListBooks( )
+    {
+        if( rootBook == null )
+            return null;
+        else
+        {
+            Collection resp = new ArrayList( );
+            rootBook.inorden( resp );
+            return resp;
+        }
+    }
+	public void addMagazine(String title, String editorial, String author, String publicationDate, int id) throws RepeatedMagazineException {
+		Magazine mg = new Magazine(title, editorial, author, publicationDate, id);
+		if(rootMagazine == null)
+			rootMagazine = mg;
+		else
+			rootMagazine.add(mg);
+	}
+    public Magazine searchMagazine( String title )
+    {
+    	return rootMagazine == null ? null : rootMagazine.search( title );
+    }
+    
+    public Collection getListMagazine( )
+    {
+        if( rootMagazine == null )
+            return null;
+        else
+        {
+            Collection resp = new ArrayList( );
+            rootMagazine.inorden( resp );
+            return resp;
+        }
+    }
 }

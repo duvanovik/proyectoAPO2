@@ -1,15 +1,15 @@
 package model;
 
 public class VRGame extends Game{
-	private int id;
-
-	public VRGame(int id, String title, String genre, int year, boolean played) {
-		super(id, title, genre, year, played);
-		this.id = id;
+	private String technology;
+	
+	public VRGame(String title, String genre, int year, boolean played, String technology) {
+		super(title, genre, year, played);
+		this.technology = technology;
 	}
 
-	public int getId() {
-		return id;
+	public String getTechnology() {
+		return technology;
 	}
 	
 }

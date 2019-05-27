@@ -254,6 +254,8 @@ public class WindowController {
     		if(dg.joinUser(nickname, password)) {
         		Parent root = FXMLLoader.load(getClass().getResource("Window.fxml"));
         		bttEnter.getScene().setRoot(root);
+        		txtPasswordSignIn.clear();
+        		txtUsernameSignIn.clear();
     		}
     		else {
     			Alert ventanita = new Alert(AlertType.ERROR);
@@ -282,6 +284,9 @@ public class WindowController {
     	anchorSignUp.setVisible(false);
     	anchorSignIn.setVisible(true);
     	anchorSignIn.toFront();
+    	txtUserName.clear();
+    	txtPassword.clear();
+    	txtEmail.clear();
     }
 
     @FXML
@@ -290,6 +295,8 @@ public class WindowController {
     	anchorSignIn.setVisible(false);
     	anchorSignUp.toFront();
     	anchorSignUp.setVisible(true);
+    	txtPasswordSignIn.clear();
+    	txtUsernameSignIn.clear();
     }
 	@FXML
 	void showGameTwoAction() {

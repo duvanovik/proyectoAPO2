@@ -3,29 +3,13 @@ package model;
 public class VideoGame extends Game{
 	private VideoGame previous;
 	private VideoGame next;
-	private int x;
-	private int y;
-	public VideoGame(int id, String title, String genre, int year, boolean played, int x, int y) {
-		super(id, title, genre, year, played);
-		this.x = x;
-		this.y = y;
+	private int id;
+	public VideoGame(String title, String genre, int year, boolean played, int id) {
+		super(title, genre, year, played);
+		this.id = id;
+		previous = null;
+		next = null;
 	}
-	public void setX(int dx) {
-		this.x = dx;
-	}
-	public void setY(int dy) {
-		this.y = dy;
-	}
-	public int getX() {
-		return x;
-	}
-	public int getY() {
-		return y;
-	}
-	public void mover() {
-		setX(getX() + 5);
-	}
-	
 	public void setPrevious(VideoGame previous) {
 
 		this.previous = previous;
@@ -45,6 +29,9 @@ public class VideoGame extends Game{
 
 		return next;
 
+	}
+	public int getId() {
+		return id;
 	}
 	
 	
