@@ -1,8 +1,10 @@
 package model;
 
+import java.io.Serializable;
+
 import exceptions.RepeatedUserException;
 
-public class User implements Comparable<User>{
+public class User implements Comparable<User>, Serializable{
 	private String nickname;
 	private String password;
 	private String email;

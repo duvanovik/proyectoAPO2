@@ -3,6 +3,7 @@ package application;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.javafx.geom.Rectangle;
 
 import exceptions.BlankException;
 import exceptions.RepeatedUserException;
@@ -20,7 +21,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
 import javafx.stage.StageStyle;
 import model.Book;
 import model.DigitalPlataform;
@@ -110,6 +113,9 @@ public class WindowController {
     private Button bttEnter;
     
     @FXML
+    private Button bttBeforeOne;
+    
+    @FXML
     private JFXTextField txtUserName;
 
     @FXML
@@ -123,13 +129,33 @@ public class WindowController {
     @FXML
     private JFXPasswordField txtPasswordSignIn;
     
+    @FXML
+    private Arc pacman;
+
+    @FXML
+    private Ellipse elipse;
+
+    @FXML
+    private Circle c2;
+    @FXML
+    private Circle c3;
+    @FXML
+    private Circle c4;
+    @FXML
+    private Pane paneGameTwo;
+    
     int dx;
     int dy;
+    int dyCircle3;
+    int dyCircle4;
+    int dyCircle2;
     
     private DigitalPlataform dg;
     private GameOneThread gameOneThread;
     private GameTwoThread gameTwoThread;
     private GameThreeThread gameThreeThread;
+    private Thread th1;
+    private Thread th2;
     
     
     private final ObservableList<Book> books = 
@@ -146,8 +172,14 @@ public class WindowController {
     	btSignIn = new JFXButton();
     	btSignUp = new JFXButton();
     	gameOneThread = new GameOneThread(this);
+    	gameTwoThread = new GameTwoThread(this);
     	dx = 5;
     	dy = 4;
+    	dyCircle4 = 7;
+    	dyCircle3 = 2;
+    	dyCircle2 = 15;
+    	th1 = new Thread(gameOneThread);
+    	th2 = new Thread(gameTwoThread);
     }
 
     @FXML
@@ -309,6 +341,7 @@ public class WindowController {
     		String email = txtEmail.getText();
     		String password = txtPassword.getText();
     		dg.addUser(nickname, password, email);
+    		dg.save();
     		anchorSignUp.setVisible(false);
     		anchorSignUp.toBack();
     		anchorSignIn.toFront();
@@ -347,6 +380,7 @@ public class WindowController {
     		e.printStackTrace();
     	}
     }
+    @FXML
     void showGameTwoAction(ActionEvent event) {
     	try {
     		Parent root = FXMLLoader.load(getClass().getResource("GameTwo.fxml"));
@@ -365,28 +399,74 @@ public class WindowController {
 
     @FXML
     void playGameOne(ActionEvent event) {
-    	Thread th = new Thread(gameOneThread);
-    	th.start();
+    	Thread th1 = new Thread(gameOneThread);
+    	th1.start();
+    }
+    @FXML
+    void playGameTwo(ActionEvent event) {
+
+    	th2.start();
     }
     public void motionGame1() {
     	
     	c1.setLayoutX(c1.getLayoutX() + dx);
     	c1.setLayoutY(c1.getLayoutY() + dy);
     	Bounds bounds = paneGameOne.getBoundsInLocal();
-    	if(hitRightOrLeftEdge(bounds))
+    	if(hitRightOrLeftEdgeCircleOne(bounds))
     		dx *= -1;
-    	if(hitTopOrBottom(bounds)) {
+    	if(hitTopOrBottomCircleOne(bounds)) {
     		dy *= -1;
     	}
     	
     }
-    private boolean hitRightOrLeftEdge(Bounds bounds) {
+    public void motionGame2() {
+    	c2.setLayoutY(c2.getLayoutY() + dyCircle2);
+    	Bounds bounds = paneGameTwo.getBoundsInLocal();
+    	c3.setLayoutY(c3.getLayoutY() + dyCircle3);
+    	c4.setLayoutY(c4.getLayoutY() + dyCircle4);
+    	if(hitTopOrBottomCircleTwo(bounds)) {
+    		dyCircle2 *= -1;
+    	}
+    	if(hitTopOrBottomCircleThree(bounds)) {
+    		dyCircle3 *= -1;
+    	}
+    	if(hitTopOrBottomCircleFour(bounds)) {
+    		dyCircle4 *= -1;
+    	}
+    }
+    
+    private boolean hitRightOrLeftEdgeCircleOne(Bounds bounds) {
         return (c1.getLayoutX() <= (bounds.getMinX() + c1.getRadius())) ||
            (c1.getLayoutX() >= (bounds.getMaxX() - c1.getRadius()));
      }
-    private boolean hitTopOrBottom(Bounds bounds) {
+    private boolean hitTopOrBottomCircleOne(Bounds bounds) {
         return (c1.getLayoutY() <= (bounds.getMinY() + c1.getRadius())) ||
            (c1.getLayoutY() >= (bounds.getMaxY() - c1.getRadius()));
      }
+    private boolean hitTopOrBottomCircleTwo(Bounds bounds) {
+        return (c2.getLayoutY() <= (bounds.getMinY() + c2.getRadius())) ||
+           (c2.getLayoutY() >= (bounds.getMaxY() - c2.getRadius()));
+     }
+    private boolean hitTopOrBottomCircleThree(Bounds bounds) {
+        return (c3.getLayoutY() <= (bounds.getMinY() + c3.getRadius())) ||
+           (c3.getLayoutY() >= (bounds.getMaxY() - c3.getRadius()));
+     }
+    private boolean hitTopOrBottomCircleFour(Bounds bounds) {
+        return (c4.getLayoutY() <= (bounds.getMinY() + c4.getRadius())) ||
+           (c4.getLayoutY() >= (bounds.getMaxY() - c4.getRadius()));
+     }
+    @FXML
+    void beforeGameOneAction(ActionEvent event){
+    	try {
+        	th1.interrupt();
+        	c1.setLayoutX(182);
+        	c1.setLayoutY(158);
+        	Parent root = FXMLLoader.load(getClass().getResource("Window.fxml"));
+        	bttBeforeOne.getScene().setRoot(root);
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
 
+    	
+    }
 }

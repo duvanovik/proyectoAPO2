@@ -1,6 +1,11 @@
 
 package model;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -30,6 +35,7 @@ public class DigitalPlataform {
 		firstVideoGame = lastVideoGame = null;
 		
 		users = new ArrayList<User>();
+
 		
 		rootBook = null;
 		
@@ -40,6 +46,7 @@ public class DigitalPlataform {
 		addVideogame("Gta Circulito", "Lucha", 2007, false, 123);
 		addVideogame("Reboticos", "Aventura", 2010, false, 456);
 		addVideogame("Pacman", "Estrategia", 2015, false, 789);
+		recoverData();
 
 	}
 	public void addVideogame(String title, String genre, int year, boolean played, int id) {
@@ -178,4 +185,89 @@ public class DigitalPlataform {
     		v.insertAfter(vr);
     	}
     }
+    public void setUsers(ArrayList<User> users) {
+
+		this.users = users;
+
+	}
+    public void save() {
+
+		FileOutputStream fS = null;
+		ObjectOutputStream oS = null;
+
+		try {
+
+			fS = new FileOutputStream("./data/serializable/info.dat");
+			oS = new ObjectOutputStream(fS);
+
+			oS.writeObject(users);
+		} catch (IOException ex) {
+
+			System.out.println(ex.getMessage());
+		} finally {
+
+			try {
+
+				if (users != null) {
+
+					fS.close();
+				}
+				if (oS != null) {
+
+					oS.close();
+				}
+
+			} catch (IOException ex) {
+
+				System.out.println(ex.getMessage());
+			}
+
+		}
+
+	}
+
+	 /**
+	  * Permite deserializar el programa, recuperando los datos de los usuarios.
+	  * 
+	  */
+	public void recoverData() {
+
+		FileInputStream fS = null;
+		ObjectInputStream oS = null;
+
+		ArrayList<User> users = null;
+
+		try {
+
+			fS = new FileInputStream("./data/serializable/info.dat");
+			oS = new ObjectInputStream(fS);
+			users = (ArrayList<User>) oS.readObject();
+			setUsers(users);
+
+		} catch (Exception ex) {
+
+			System.out.println(ex.getMessage());
+
+		} finally {
+
+			try {
+				if (fS != null) {
+
+					fS.close();
+				}
+
+				if (oS != null) {
+
+					oS.close();
+
+				}
+
+			} catch (IOException e) {
+
+				System.out.println(e.getMessage());
+			}
+
+		}
+
+	}
 }

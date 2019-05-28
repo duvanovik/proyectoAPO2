@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="817.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<Pane fx:id="paneGameTwo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="817.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowController">
+   <children>
+      <Circle fx:id="c2" fill="DODGERBLUE" layoutX="1022.0" layoutY="376.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button layoutX="14.0" layoutY="44.0" mnemonicParsing="false" onAction="#playGameTwo" text="Jugar" />
+      <Circle fx:id="c3" fill="DODGERBLUE" layoutX="309.0" layoutY="365.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="c4" fill="DODGERBLUE" layoutX="666.0" layoutY="376.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</Pane>

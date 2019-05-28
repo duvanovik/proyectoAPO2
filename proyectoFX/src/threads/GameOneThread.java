@@ -6,7 +6,6 @@ import model.VideoGame;
 
 public class GameOneThread extends Thread {
 
-	private DigitalPlataform dg;
 	private WindowController wc;
 	
 	public GameOneThread(WindowController wc) {
