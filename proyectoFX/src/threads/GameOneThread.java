@@ -18,7 +18,7 @@ public class GameOneThread extends Thread {
 				Thread.sleep(25);
 			} catch (InterruptedException exc) {
 				// TODO Auto-generated catch block
-				exc.printStackTrace();
+				
 			}
 		}
 	}

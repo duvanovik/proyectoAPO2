@@ -4,12 +4,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 
-
 <Pane fx:id="paneGameTwo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="817.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowController">
    <children>
       <Circle fx:id="c2" fill="DODGERBLUE" layoutX="1022.0" layoutY="376.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
-      <Button layoutX="14.0" layoutY="44.0" mnemonicParsing="false" onAction="#playGameTwo" text="Jugar" />
+      <Button layoutX="81.0" layoutY="44.0" mnemonicParsing="false" onAction="#playGameTwo" text="play" />
       <Circle fx:id="c3" fill="DODGERBLUE" layoutX="309.0" layoutY="365.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="c4" fill="DODGERBLUE" layoutX="666.0" layoutY="376.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button fx:id="bttBeforeTwo" layoutX="14.0" layoutY="44.0" mnemonicParsing="false" onAction="#beforeGameTwoAction" text="before" />
    </children>
 </Pane>

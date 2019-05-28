@@ -95,6 +95,9 @@ public class WindowController {
     private Button bttGame5;
     
     @FXML
+    private Button bttBeforeTwo;
+    
+    @FXML
     private JFXButton btSignIn;
     
     @FXML
@@ -399,7 +402,6 @@ public class WindowController {
 
     @FXML
     void playGameOne(ActionEvent event) {
-    	Thread th1 = new Thread(gameOneThread);
     	th1.start();
     }
     @FXML
@@ -464,9 +466,25 @@ public class WindowController {
         	Parent root = FXMLLoader.load(getClass().getResource("Window.fxml"));
         	bttBeforeOne.getScene().setRoot(root);
     	}catch(Exception e) {
-    		e.printStackTrace();
+    		
     	}
 
     	
+    }
+    @FXML
+    void beforeGameTwoAction(ActionEvent event) {
+    	try {
+    		th2.interrupt();
+    		c3.setLayoutX(309);
+    		c3.setLayoutY(365);
+    		c4.setLayoutX(666);
+    		c4.setLayoutX(376);
+    		c2.setLayoutX(1022);
+    		c2.setLayoutX(376);
+        	Parent root = FXMLLoader.load(getClass().getResource("Window.fxml"));
+        	bttBeforeTwo.getScene().setRoot(root);
+    	}catch(Exception e) {
+    		
+    	}
     }
 }
